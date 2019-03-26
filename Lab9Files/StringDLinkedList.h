@@ -9,15 +9,16 @@ class doubleStringList
 {
 private:
 	//declare a struct for the list 
-	struct ListNode
+	struct Node
 	{
 		string data;
-		struct ListNode *prev;  //pointer to the previous node 
-		struct ListNode *next;  //pointer to the next node 
+		struct Node *prev =nullptr;  //pointer to the previous node 
+		struct Node *next=nullptr;  //pointer to the next node 
 	};
 
-	string * head; 
-	string * tail;
+	Node * head; 
+	Node * tail;
+	
 
 public:
 
@@ -25,16 +26,18 @@ public:
 	doubleStringList(); 
 	//a destructor: to delete any remaining nodes, member functions to access, delete and append a value at either end of the list 
 	~doubleStringList();
-	// a member function to remove all instances of a specific value
-	void remove();  //deletes all the values in the list? 
-	//*************************************************************************************************************
-	// a member function to display the current contents of the entire list either 
-	//forwards or 
-	//backwards (these two function should accept a ostream reference to print to which will make them easy to test).
-	//*****************************************************************************************************************
-	//front (return the value of the first thing in the list?)
-	//back (return the value of the first thing in the list?)
-
+	// a member function that removes all instances of a specific value
+	void removeAll(const string & toRmv ); 
+	// a member function that removes an instances of a specific value
+	void remove(Node* cur);
+	//display forwards: It will display the list from head to tail (accept a ostream reference to print to which will make them easy to test).
+	void displayFoward(const ostream & out);
+	//backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
+	void displayBackwards(const ostream & out);
+	//front (return the value of the first thing in the list)
+	string front();
+	//back (return the value of the first thing in the list)
+	string back();
 	//push_front: Adds a string in front of the begining of the list 
 	void push_front(const string & value);
 	//push_back: Adds a string in the back of the end of the list 

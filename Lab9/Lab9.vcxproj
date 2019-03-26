@@ -115,6 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Lab9Files\catch.hpp" />
+    <ClInclude Include="..\Lab9Files\StringDLinkedList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Lab9Files\lab9test-driver.cpp" />
+    <ClCompile Include="..\Lab9Files\StringDLinkedList.cpp" />
+    <ClCompile Include="..\Lab9Files\StringDLinkedListTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
