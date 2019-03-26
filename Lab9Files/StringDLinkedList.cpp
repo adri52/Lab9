@@ -10,11 +10,22 @@ doubleStringList::doubleStringList()
 
 }
 
+
+
+
+
+
+
 //a destructor: to delete any remaining nodes, member functions to access, delete and append a value at either end of the list 
 doubleStringList::~doubleStringList()
 {
 
 }
+
+
+
+
+
 
 // a member function that removes an instances of a specific value
 void doubleStringList::remove(Node* cur)
@@ -59,25 +70,38 @@ void doubleStringList::removeAll(const string & toRmv)
 }
 
 
+
+
 //display forwards: It will display the list from head to tail (accept a ostream reference to print to which will make them easy to test).
 void doubleStringList::displayFoward(const ostream & out)
 {
-
+	Node *cur = head;
+	while (cur != nullptr)
+	{
+		/*
+		out << "[" << 
+		*/
+	}
 }
 //backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
 void doubleStringList::displayBackwards(const ostream & out)
 {
 
 }
+
+
+
+
+
 //front (return the value of the first thing in the list)
 string doubleStringList::front()
 {
-
+	return head->data;
 }
 //back (return the value of the first thing in the list)
 string doubleStringList::back()
 {
-
+	return tail->data;
 }
 
 //push_front: Adds a string in front of the begining of the list 
