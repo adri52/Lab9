@@ -18,7 +18,7 @@ private:
 
 	Node * head; 
 	Node * tail;
-	
+	int size; 
 
 public:
 
@@ -31,9 +31,9 @@ public:
 	// a member function that removes an instances of a specific value
 	void remove(Node* cur);
 	//display forwards: It will display the list from head to tail (accept a ostream reference to print to which will make them easy to test).
-	void displayFoward(const ostream & out);
+	void displayFoward( ostream & out);
 	//backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
-	void displayBackwards(const ostream & out);
+	void displayBackwards( ostream & out);
 	//front (return the value of the first thing in the list)
 	string front();
 	//back (return the value of the first thing in the list)
