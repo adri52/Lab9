@@ -1,12 +1,18 @@
 #include<iostream>
 #include <string>
+#include<sstream>
 #include "StringDLinkedList.h"
+
+using namespace std; 
+
+
 
 //default constructor
 doubleStringList::doubleStringList()
 {
 	head = nullptr;
 	tail = nullptr;
+	size = 0; 
 
 }
 
@@ -48,6 +54,7 @@ void doubleStringList::remove(Node* cur)
 		cur->next->prev = cur->prev;
 	}
 
+	size--;
 }
 
 // a member function that removes all instances of a specific value
@@ -73,20 +80,36 @@ void doubleStringList::removeAll(const string & toRmv)
 
 
 //display forwards: It will display the list from head to tail (accept a ostream reference to print to which will make them easy to test).
-void doubleStringList::displayFoward(const ostream & out)
+void doubleStringList::displayFoward( ostream & out)
 {
 	Node *cur = head;
+	int i = 1;
+	if(cur != nullptr)
+		out << "{" << (*cur).data; 
+
 	while (cur != nullptr)
 	{
-		/*
-		out << "[" << 
-		*/
+		
+		out << ", " << (*(cur+i)).data;
+		i++;
+
 	}
 }
 //backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
-void doubleStringList::displayBackwards(const ostream & out)
+void doubleStringList::displayBackwards( ostream & out)
 {
+	Node *cur = tail;
+	int i = 1;
+	if (cur != nullptr)
+		out << "{" << (*cur).data;
 
+	while (cur != nullptr)
+	{
+
+		out << ", " << (*(cur - i)).data;
+		i--;
+
+	}
 }
 
 
@@ -120,6 +143,7 @@ void doubleStringList::push_front( const string & value)
 		head = temp;
 	}
 
+	size++;
 
 }
 //push_back: Adds a string in the back of the end of the list 
@@ -140,19 +164,45 @@ void doubleStringList::push_back(const string & value)
 
 	tail = temp;
 
+	size++;
 }
 //pop_front: Removes a string in front of the begining of the list 
 void doubleStringList::pop_front()
 {
-	//specil cases when we have only one 
+
+	Node * temp = head;
+
+
 	head = head->next;
 	head->prev = nullptr;
+
+	delete temp;
+
+	size--; 
 
 }
 //pop_back: Removes a string in the back of the end of the list 
 void doubleStringList::pop_back()
 {
-	//specil cases when we have only one 
-	tail = tail->prev;
-	tail->next = nullptr;
+	
+
+	if (tail)
+	{
+		Node *temp = tail; 
+		tail = tail->prev;
+
+		if (tail)
+		{
+			tail->next = nullptr;
+		}
+		else
+		{
+			head = nullptr;
+		}
+
+		size--; 
+		delete temp;
+
+	}
+
 }
