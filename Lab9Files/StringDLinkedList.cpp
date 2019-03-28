@@ -20,15 +20,16 @@ doubleStringList::doubleStringList()
 
 
 
-
+//*******************************************************************************************************************************************************************
 
 //a destructor: to delete any remaining nodes, member functions to access, delete and append a value at either end of the list 
 doubleStringList::~doubleStringList()
 {
-
+	while (tail != head)
+		pop_back(); 
 }
 
-
+//*******************************************************************************************************************************************************************
 
 
 
@@ -84,32 +85,39 @@ void doubleStringList::displayFoward( ostream & out)
 {
 	Node *cur = head;
 	int i = 1;
-	if(cur != nullptr)
-		out << "{" << (*cur).data; 
+
+	out << "{"; 
 
 	while (cur != nullptr)
 	{
 		
-		out << ", " << (*(cur+i)).data;
-		i++;
+		out << (*(cur)).data << ", ";
+		cur = cur->next;
+
 
 	}
+	out << "}";
 }
+
+
+
+
 //backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
 void doubleStringList::displayBackwards( ostream & out)
 {
 	Node *cur = tail;
 	int i = 1;
-	if (cur != nullptr)
-		out << "{" << (*cur).data;
+	out << "{";
 
 	while (cur != nullptr)
 	{
 
-		out << ", " << (*(cur - i)).data;
-		i--;
+		out << (*(cur)).data << ", ";
+		cur = cur->prev;
+
 
 	}
+	out << "}";
 }
 
 
@@ -130,11 +138,17 @@ string doubleStringList::back()
 //push_front: Adds a string in front of the begining of the list 
 void doubleStringList::push_front( const string & value)
 {
-	Node *temp = new Node{ value };
+	Node *temp = new Node;
+	temp->data = value;
+	
+
+	
+	//{ value };
 
 	if (!head)
 	{
 		head = temp;
+		head->next = nullptr;
 	}
 	else
 	{
@@ -149,7 +163,8 @@ void doubleStringList::push_front( const string & value)
 //push_back: Adds a string in the back of the end of the list 
 void doubleStringList::push_back(const string & value)
 {
-	Node *temp = new Node{ value };
+	Node *temp = new Node;
+	temp->data = value; 
 
 	if (!head)
 	{

@@ -18,7 +18,7 @@ private:
 
 	Node * head; 
 	Node * tail;
-	int size; 
+	int size=0; 
 
 public:
 
