@@ -37,13 +37,13 @@ doubleStringList::~doubleStringList()
 // a member function that removes an instances of a specific value
 void doubleStringList::remove(Node* cur)
 {
-	if (cur = head)
+	if (cur == head)
 	{
 		head = head->next;
 		head->prev = nullptr;
 		delete cur; 
 	}
-	else if (cur = tail)
+	else if (cur == tail)
 	{
 		tail = tail->prev;
 		tail->next = nullptr;
@@ -53,6 +53,7 @@ void doubleStringList::remove(Node* cur)
 	{
 		cur->prev->next = cur->next;
 		cur->next->prev = cur->prev;
+		delete cur;
 	}
 
 	size--;
@@ -84,35 +85,31 @@ void doubleStringList::removeAll(const string & toRmv)
 void doubleStringList::displayFoward( ostream & out)
 {
 	Node *cur = head;
-	int i = 1;
 
 	out << "{"; 
 
 	while (cur != nullptr)
 	{
-		
-		out << (*(cur)).data << ", ";
+		out << (*(cur)).data;
+		if (cur->next != nullptr)
+			out << ", ";
 		cur = cur->next;
-
-
 	}
 	out << "}";
 }
-
-
-
 
 //backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
 void doubleStringList::displayBackwards( ostream & out)
 {
 	Node *cur = tail;
-	int i = 1;
 	out << "{";
 
 	while (cur != nullptr)
 	{
 
-		out << (*(cur)).data << ", ";
+		out << (*(cur)).data;
+		if (cur->prev != nullptr)
+			out << ", ";
 		cur = cur->prev;
 
 
@@ -141,18 +138,18 @@ void doubleStringList::push_front( const string & value)
 	Node *temp = new Node;
 	temp->data = value;
 	
-
-	
-	//{ value };
-
 	if (!head)
 	{
+
 		head = temp;
+		tail = head;
 		head->next = nullptr;
+		head->prev = nullptr;
 	}
 	else
 	{
 		temp->next = head;
+		head->prev = temp;
 		temp->prev = nullptr;
 		head = temp;
 	}

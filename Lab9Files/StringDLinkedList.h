@@ -20,6 +20,9 @@ private:
 	Node * tail;
 	int size=0; 
 
+	// a member function that removes an instances of a specific value
+	void remove(Node* cur);
+
 public:
 
     //default constructor
@@ -28,8 +31,7 @@ public:
 	~doubleStringList();
 	// a member function that removes all instances of a specific value
 	void removeAll(const string & toRmv ); 
-	// a member function that removes an instances of a specific value
-	void remove(Node* cur);
+
 	//display forwards: It will display the list from head to tail (accept a ostream reference to print to which will make them easy to test).
 	void displayFoward( ostream & out);
 	//backwards: It will display the list from tail to head (accept a ostream reference to print to which will make them easy to test).
